@@ -12,16 +12,16 @@ type PreviousHash = String
 type OverAllDetails = (Details, CurrentHash, PreviousHash) 
 type SampleBlockChain = [OverAllDetails]
 
-fstOfTriple :: SenderName -> OverAllDetails -> OverAllDetails
-fstOfTriple x (_, _, _) = (x, _, _) -- this is to set the first element from tuple,
+fstOfTriple :: Details -> OverAllDetails -> OverAllDetails
+fstOfTriple x (_, _, _) = (x, _, _) -- this is to set the first element from tuple, details of transaction
 
-sndOfTriple :: RecieverName -> OverAllDetails -> OverAllDetails
+sndOfTriple :: CurrentHash -> OverAllDetails -> OverAllDetails
 sndOfTriple y (_, _, _) = (_, y, _) -- this is to set the second element from tuple, current has
 
-gsndOfTriple :: OverAllDetails -> RecieverName
+gsndOfTriple :: OverAllDetails -> CurrentHash
 gsndOfTriple (_, y, _) = y  -- this is to get the second element from tuple, current has
 
-trdOfTriple :: Amount-> OverAllDetails -> OverAllDetails
+trdOfTriple :: PreviousHash-> OverAllDetails -> OverAllDetails
 trdOfTriple z (_, _, _) = (_, _, z) -- this is to set the third element from tuple, previoushash
 
 emptyBlockChain :: Details-> OverAllDetails -> SampleBlockChain -> SampleBlockChain
