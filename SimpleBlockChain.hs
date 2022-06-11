@@ -27,7 +27,7 @@ emptyBlockchain details oDetails blockChain =
     trdOfTriple(show 0, oDetail)
     blockChain ++ oDetail
 
-nonEmptyBlockchain :: Details -> overAllDetails -> SampleBlockChain -> SampleBlockChain
+nonEmptyBlockchain :: Details -> OverAllDetails -> SampleBlockChain -> SampleBlockChain
 nonEmptyBlockChain details oDetails blockchain = 
     fstOfTriple (details, oDetail)
     sndOfTriple hash details oDetail
