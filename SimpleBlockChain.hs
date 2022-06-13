@@ -28,7 +28,7 @@ emptyBlockChain :: Details-> OverAllDetails -> SampleBlockChain -> SampleBlockCh
 emptyBlockChain details oDetails blockChain = 
     fstOfTriple details oDetails
     sndOfTriple (hash details) oDetails
-    trdOfTriple show 0 oDetails
+    trdOfTriple (show 0) oDetails
     blockChain ++ oDetails
 
 nonEmptyBlockChain :: Details -> OverAllDetails -> SampleBlockChain -> SampleBlockChain
