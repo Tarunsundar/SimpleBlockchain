@@ -26,32 +26,31 @@ trdOfTriple z (_, _, _) = (_, _, z) -- this is to set the third element from tup
 
 emptyBlockChain :: Details-> OverAllDetails -> SampleBlockChain -> SampleBlockChain
 emptyBlockChain details oDetails blockChain = 
-    fstOfTriple (details, oDetails)
-    sndOfTriple (hash etails, oDetails)
-    trdOfTriple(show 0, oDetails)
+    fstOfTriple details oDetails
+    sndOfTriple (hash details) oDetails
+    trdOfTriple show 0 oDetails
     blockChain ++ oDetails
 
 nonEmptyBlockChain :: Details -> OverAllDetails -> SampleBlockChain -> SampleBlockChain
 nonEmptyBlockChain details oDetails blockChain = 
-    fstOfTriple (details, oDetails)
-    sndOfTriple (hash details, oDetails)
-    trdOfTriple(gsndOfTriple(oDetails), oDetails)
+    fstOfTriple details oDetails
+    sndOfTriple (hash details) oDetails
+    trdOfTriple (gsndOfTriple oDetails) oDetails
     blockChain ++ oDetails
 
-generateTransactionDetails :: SenderName-> RecieverName -> Amount -> Details 
---this method generates transaction details as a string
+generateTransactionDetails :: SenderName-> RecieverName -> Amount -> Details --this method generates transaction details as a string
 generateTransactionDetails sName rName amount = 
     sName ++ rName ++ show amount
 
 insertTransaction :: Details-> OverAllDetails -> SampleBlockChain-> SampleBlockChain
 insertTransaction details oDetails blockChain=  
     if(length blockChain == 0) --genisis block
-        then emptyBlockChain(details, oDetails, blockChain)
+        then emptyBlockChain details oDetails blockChain
     else  
-        nonEmptyBlockChain(details, oDetails, blockChain)
+        nonEmptyBlockChain details oDetails blockChain
 
 printBlockChain :: String -> IO()
-printBlockChain sBChain = putStrLn(sBChain)
+printBlockChain sBChain = putStrLn sBChain
  
 main = do 
     let oDetails = OverAllDetails
