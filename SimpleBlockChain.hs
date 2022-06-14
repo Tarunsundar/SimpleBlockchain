@@ -35,7 +35,7 @@ nonEmptyBlockChain :: Details -> OverAllDetails -> SampleBlockChain -> SampleBlo
 nonEmptyBlockChain details oDetails blockChain = 
     fstOfTriple details oDetails
     sndOfTriple (hash details) oDetails
-    trdOfTriple (gsndOfTriple oDetails) oDetails
+    trdOfTriple (gsndOfTriple last blockChain) oDetails
     blockChain ++ oDetails
 
 generateTransactionDetails :: SenderName-> RecieverName -> Amount -> Details --this method generates transaction details as a string
